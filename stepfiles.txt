@@ -1,0 +1,20 @@
+1. open codepace
+2. open mongodb atlas
+3. in mongodb go to database 
+4. open connect tab
+5. go to shell tab
+6. change to ubantu (only for codespace)
+7. copy its url
+8. paste it into terminal  like this (wget https://downloads.mongodb.com/compass/mongodb-mongosh_1.10.6_amd64.deb)
+9. type i=this cmd to check that its download for not
+   ls - lh
+   ls -larth
+10. sudo dpkg -i mangodb-(press tab key)
+11. again go to step 5 and copy this cmd (mongosh "mongodb+srv://cluster0.se5bb8j.mongodb.net/" --apiVersion 1 --username admin)
+  if username is diff then change it
+12. it will connect the database
+13. show dbs --> cmd for check the database
+14. use student --> to go into specific database
+15. use bollywood; --> to create new database
+16. db.createCollection("movies"); --> to create collections
+17. db --> to check which database now using
