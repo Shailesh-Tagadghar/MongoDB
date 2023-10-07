@@ -29,3 +29,25 @@ db.movies.updateOne({}, {$set : {city : "Mumbai"}});
 
 --> to update many records
 db.movies.updateMany({}, {$set : {city : "Mumbai"}});
+
+--> to fetch single field
+db.movies.find({}, {moviename:1}); -->for name field
+db.movies.find({}, {city:1}); -->for city field
+db.movies.find({}, {_id:0}); --> to skip id field
+db.movies.find({}, {moviename:1, _id:0}); --> to show only movienames
+db.movies.find({}, {city:1, _id:0}); --> to show only cities
+db.movies.find({city:"Delhi"}) --> where clause
+db.movies.find({city: {$eq : "Mumbai"}}); --> equal to
+db.movies.find({city: {$ne : "Mumbai"}}); --> not equal to
+db.movies.find({city: {$in : ["Delhi","Pune"]}}); --> In operator
+db.movies.find({salary: {$lt : 50000}}); --> less than
+db.movies.find({salary: {$gt : 50000}});  --> greater than
+db.movies.find({salary: {$lte : 50000}}); --> less than eqaul to
+db.movies.find({salary: {$gte : 50000}});  --> greater than eqaul to
+db.movies.find({$and : [{city:"Mumbai"},{salary: {$gt : 50000}}]}); --> and operator
+
+
+
+
+
+
