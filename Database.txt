@@ -45,9 +45,13 @@ db.movies.find({salary: {$gt : 50000}});  --> greater than
 db.movies.find({salary: {$lte : 50000}}); --> less than eqaul to
 db.movies.find({salary: {$gte : 50000}});  --> greater than eqaul to
 db.movies.find({$and : [{city:"Mumbai"},{salary: {$gt : 50000}}]}); --> and operator
-
-
-
-
+db.movies.count(); --> count()
+db.movies.find({city: "Mumbai"}).count(); --> city mumbai count
+db.movies.find().sort({salary : -1}); --> sort function descending
+db.movies.find().sort({salary : 1}); --> sort function ascending
+db.movies.distinct("city"); --> distinct function (for unique values) 
+db.movies.distinct("city").length; --> to check length (length function)
+db.movies.find().limit(5); --> limit (to display given records)
+db.movies.find().skip(5).limit(5); --> skip (to display after this records (like in limit we have display 5 records and now using skip we are displaying 6 to 10 records))
 
 
