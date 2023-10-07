@@ -20,3 +20,12 @@ db.movies.find()
 --> to fetch one single record
 db.movies.findOne()
 db.movies.find({moviename : "Mummy"}); (like where clause)
+
+--> to delete one single record
+db.movies.deleteOne({moviename : "Ace"});
+
+--> to update single record
+db.movies.updateOne({}, {$set : {city : "Mumbai"}});
+
+--> to update many records
+db.movies.updateMany({}, {$set : {city : "Mumbai"}});
