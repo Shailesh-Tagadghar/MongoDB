@@ -1,0 +1,22 @@
+--> to create database
+use bollywood;
+
+--> to create collections(tables)
+db.createCollection("movies");
+
+--> to insert single record (rows)
+db.movies.insertOne({moviename : "Hera Pheri"});
+db.movies.insertOne({moviename : "Welcome"});
+db.movies.insertOne({moviename : "Raja Babu"});
+db.movies.insertOne({moviename : "Annabella"});
+db.movies.insertOne({moviename : "Mummy"});
+
+--> to insert many record (rows)
+db.movies.insertMany([{moviename:"Quarban"},{moviename: "Hum Tum"},{moviename : "Ace"}])
+
+--> to find records are inserted or not (basically its select query)
+db.movies.find()
+
+--> to fetch one single record
+db.movies.findOne()
+db.movies.find({moviename : "Mummy"}); (like where clause)
