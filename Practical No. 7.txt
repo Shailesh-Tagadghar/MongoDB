@@ -1,0 +1,495 @@
+Practical No. 7
+
+test> use company
+switched to db company
+company> db.createCollection("employee");
+{ ok: 1 }
+company> db.createCollection("department");
+{ ok: 1 }
+company> db.department.insertMany([{"name":"IT","location":"Mumbai"},{"name":"CS","location":"pune"},{"name":"HR","location":"Channai"},{"name":"Manager","location":"Banglore"},{"name":"Teacher","location":"Vidyavihar"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("654304bfbc90197846c2643e"),
+    '1': ObjectId("654304bfbc90197846c2643f"),
+    '2': ObjectId("654304bfbc90197846c26440"),
+    '3': ObjectId("654304bfbc90197846c26441"),
+    '4': ObjectId("654304bfbc90197846c26442")
+  }
+}
+
+db.employee.insertMany([
+{"name":"Shailesh Tagadghar","age":21,"designation":"Web Developer","departmentId":"654304bfbc90197846c2643e"},
+{"name":"Abhishek Jaiswar","age":23,"designation":"Graphic Designer","departmentId":"654304bfbc90197846c2643f"},
+{"name":"Aniruddha Ambre","age":25,"designation":"Database Administator","departmentId":"654304bfbc90197846c26440"},
+{"name":"Sahil Kakade","age":23,"designation":"Sr Web Developer","departmentId":"654304bfbc90197846c2643e"},
+{"name":"Omkar Awalegoankar","age":22,"designation":"Database Handler","departmentId":"654304bfbc90197846c26440"},
+{"name":"Ayush Jadhav","age":21,"designation":"Electrical Engineer","departmentId":"654304bfbc90197846c2643f"},
+{"name":"Sandesh Nijapkar","age":21,"designation":"Software Developer","departmentId":"654304bfbc90197846c26441"},
+{"name":"Radhika Tagadghar","age":24,"designation":"Software Developer","departmentId":"654304bfbc90197846c26441"},
+{"name":"Rohan Gaikwad","age":26,"designation":"Salesman","departmentId":"654304bfbc90197846c26442"},
+{"name":"Ganesh Babar","age":23,"designation":"Shopman","departmentId":"654304bfbc90197846c26442"},
+{"name":"SAT","age":30,"designation":"XYZ","departmentId":"23"}
+]);
+
+
+company> db.employee.insertMany([{"name":"Shailesh Tagadghar","age":21,"designation":"Web Developer","departmentId":"654304bfbc90197846c2643e"},{"name":"Abhishek Jaiswar","age":23,"designation":"Graphic Designer","departmentId":"654304bfbc90197846c2643f"},{"name":"Aniruddha Ambre","age":25,"designation":"Database Administator","departmentId":"654304bfbc90197846c26440"},{"name":"Sahil Kakade","age":23,"designation":"Sr Web Developer","departmentId":"654304bfbc90197846c2643e"},{"name":"Omkar Awalegoankar","age":22,"designation":"Database Handler","departmentId":"654304bfbc90197846c26440"},{"name":"Ayush Jadhav","age":21,"designation":"Electrical Engineer","departmentId":"654304bfbc90197846c2643f"},{"name":"Sandesh Nijapkar","age":21,"designation":"Software Developer","departmentId":"654304bfbc90197846c26441"},{"name":"Radhika Tagadghar","age":24,"designation":"Software Developer","departmentId":"654304bfbc90197846c26441"},{"name":"Rohan Gaikwad","age":26,"designation":"Salesman","departmentId":"654304bfbc90197846c26442"},{"name":"Ganesh Babar","age":23,"designation":"Shopman","departmentId":"654304bfbc90197846c26442"},{"name":"SAT","age":30,"designation":"XYZ","departmentId":"23"}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65430815bc90197846c26443"),
+    '1': ObjectId("65430815bc90197846c26444"),
+    '2': ObjectId("65430815bc90197846c26445"),
+    '3': ObjectId("65430815bc90197846c26446"),
+    '4': ObjectId("65430815bc90197846c26447"),
+    '5': ObjectId("65430815bc90197846c26448"),
+    '6': ObjectId("65430815bc90197846c26449"),
+    '7': ObjectId("65430815bc90197846c2644a"),
+    '8': ObjectId("65430815bc90197846c2644b"),
+    '9': ObjectId("65430815bc90197846c2644c"),
+
+
+Query 1 : Retrieve all employees
+
+company> db.employee.find()
+[
+  {
+    _id: ObjectId("65430815bc90197846c26443"),
+    name: 'Shailesh Tagadghar',
+    age: 21,
+    designation: 'Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26444"),
+    name: 'Abhishek Jaiswar',
+    age: 23,
+    designation: 'Graphic Designer',
+    departmentId: '654304bfbc90197846c2643f'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26445"),
+    name: 'Aniruddha Ambre',
+    age: 25,
+    designation: 'Database Administator',
+    departmentId: '654304bfbc90197846c26440'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26446"),
+    name: 'Sahil Kakade',
+    age: 23,
+    designation: 'Sr Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26447"),
+    name: 'Omkar Awalegoankar',
+    age: 22,
+    designation: 'Database Handler',
+    departmentId: '654304bfbc90197846c26440'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26448"),
+    name: 'Ayush Jadhav',
+    age: 21,
+    designation: 'Electrical Engineer',
+    departmentId: '654304bfbc90197846c2643f'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26449"),
+    name: 'Sandesh Nijapkar',
+    age: 21,
+    designation: 'Software Developer',
+    departmentId: '654304bfbc90197846c26441'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644a"),
+    name: 'Radhika Tagadghar',
+    age: 24,
+    designation: 'Software Developer',
+    departmentId: '654304bfbc90197846c26441'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644b"),
+    name: 'Rohan Gaikwad',
+    age: 26,
+    designation: 'Salesman',
+    departmentId: '654304bfbc90197846c26442'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644c"),
+    name: 'Ganesh Babar',
+    age: 23,
+    designation: 'Shopman',
+    departmentId: '654304bfbc90197846c26442'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644d"),
+    name: 'SAT',
+    age: 30,
+    designation: 'XYZ',
+    departmentId: '23'
+  }
+]
+
+Query 2 : Retrieve employees in a specific department (e.g., IT department)
+
+company> db.employee.find({departmentId:"654304bfbc90197846c2643e"});
+[
+  {
+    _id: ObjectId("65430815bc90197846c26443"),
+    name: 'Shailesh Tagadghar',
+    age: 21,
+    designation: 'Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26446"),
+    name: 'Sahil Kakade',
+    age: 23,
+    designation: 'Sr Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  }
+]
+
+Query 3 : Retrieve all departments
+
+company> db.department.find()
+[
+  {
+    _id: ObjectId("654304bfbc90197846c2643e"),
+    name: 'IT',
+    location: 'Mumbai'
+  },
+  {
+    _id: ObjectId("654304bfbc90197846c2643f"),
+    name: 'CS',
+    location: 'pune'
+  },
+  {
+    _id: ObjectId("654304bfbc90197846c26440"),
+    name: 'HR',
+    location: 'Channai'
+  },
+  {
+    _id: ObjectId("654304bfbc90197846c26441"),
+    name: 'Manager',
+    location: 'Banglore'
+  },
+  {
+    _id: ObjectId("654304bfbc90197846c26442"),
+    name: 'Teacher',
+    location: 'Vidyavihar'
+  }
+]
+
+Query 4 : Retrieve employees older than 30 (23) years
+
+company> db.employee.find({age: {$gt : 23}});
+[
+  {
+    _id: ObjectId("65430815bc90197846c26445"),
+    name: 'Aniruddha Ambre',
+    age: 25,
+    designation: 'Database Administator',
+    departmentId: '654304bfbc90197846c26440'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644a"),
+    name: 'Radhika Tagadghar',
+    age: 24,
+    designation: 'Software Developer',
+    departmentId: '654304bfbc90197846c26441'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644b"),
+    name: 'Rohan Gaikwad',
+    age: 26,
+    designation: 'Salesman',
+    departmentId: '654304bfbc90197846c26442'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644d"),
+    name: 'SAT',
+    age: 30,
+    designation: 'XYZ',
+    departmentId: '23'
+  }
+]
+
+Query 5 : Retrieve employees sorted by age in ascending order
+
+company> db.employee.find().sort({age : 1});
+[
+  {
+    _id: ObjectId("65430815bc90197846c26443"),
+    name: 'Shailesh Tagadghar',
+    age: 21,
+    designation: 'Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26448"),
+    name: 'Ayush Jadhav',
+    age: 21,
+    designation: 'Electrical Engineer',
+    departmentId: '654304bfbc90197846c2643f'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26449"),
+    name: 'Sandesh Nijapkar',
+    age: 21,
+    designation: 'Software Developer',
+    departmentId: '654304bfbc90197846c26441'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26447"),
+    name: 'Omkar Awalegoankar',
+    age: 22,
+    designation: 'Database Handler',
+    departmentId: '654304bfbc90197846c26440'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26444"),
+    name: 'Abhishek Jaiswar',
+    age: 23,
+    designation: 'Graphic Designer',
+    departmentId: '654304bfbc90197846c2643f'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26446"),
+    name: 'Sahil Kakade',
+    age: 23,
+    designation: 'Sr Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644c"),
+    name: 'Ganesh Babar',
+    age: 23,
+    designation: 'Shopman',
+    departmentId: '654304bfbc90197846c26442'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644a"),
+    name: 'Radhika Tagadghar',
+    age: 24,
+    designation: 'Software Developer',
+    departmentId: '654304bfbc90197846c26441'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26445"),
+    name: 'Aniruddha Ambre',
+    age: 25,
+    designation: 'Database Administator',
+    departmentId: '654304bfbc90197846c26440'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644b"),
+    name: 'Rohan Gaikwad',
+    age: 26,
+    designation: 'Salesman',
+    departmentId: '654304bfbc90197846c26442'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644d"),
+    name: 'SAT',
+    age: 30,
+    designation: 'XYZ',
+    departmentId: '23'
+  }
+]
+
+Query 6 : Retrieve employees belonging to a specific department with their department details
+(using $lookup)
+
+
+
+
+Query 7 : Retrieve employees sorted by department and age
+
+company> db.employee.aggregate([{$sort: {departmentId: 1,age: 1}}])
+[
+  {
+    _id: ObjectId("65430815bc90197846c2644d"),
+    name: 'SAT',
+    age: 30,
+    designation: 'XYZ',
+    departmentId: '23'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26443"),
+    name: 'Shailesh Tagadghar',
+    age: 21,
+    designation: 'Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26446"),
+    name: 'Sahil Kakade',
+    age: 23,
+    designation: 'Sr Web Developer',
+    departmentId: '654304bfbc90197846c2643e'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26448"),
+    name: 'Ayush Jadhav',
+    age: 21,
+    designation: 'Electrical Engineer',
+    departmentId: '654304bfbc90197846c2643f'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26444"),
+    name: 'Abhishek Jaiswar',
+    age: 23,
+    designation: 'Graphic Designer',
+    departmentId: '654304bfbc90197846c2643f'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26447"),
+    name: 'Omkar Awalegoankar',
+    age: 22,
+    designation: 'Database Handler',
+    departmentId: '654304bfbc90197846c26440'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26445"),
+    name: 'Aniruddha Ambre',
+    age: 25,
+    designation: 'Database Administator',
+    departmentId: '654304bfbc90197846c26440'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c26449"),
+    name: 'Sandesh Nijapkar',
+    age: 21,
+    designation: 'Software Developer',
+    departmentId: '654304bfbc90197846c26441'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644a"),
+    name: 'Radhika Tagadghar',
+    age: 24,
+    designation: 'Software Developer',
+    departmentId: '654304bfbc90197846c26441'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644c"),
+    name: 'Ganesh Babar',
+    age: 23,
+    designation: 'Shopman',
+    departmentId: '654304bfbc90197846c26442'
+  },
+  {
+    _id: ObjectId("65430815bc90197846c2644b"),
+    name: 'Rohan Gaikwad',
+    age: 26,
+    designation: 'Salesman',
+    departmentId: '654304bfbc90197846c26442'
+  }
+]
+
+Query 8 : Increment the age of all employees by 1 year
+
+company> db.employee.updateMany({}, {"$inc": {"age": 1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0
+}
+
+Query 9 : Rename a department (e.g., rename "IT" department to "Information Technology")
+
+company> db.department.updateOne({"name": "IT"}, {"$set": {"name": "Information Technology"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+Query 10 : Update an employee's information (e.g., update Bob Smith's age)
+
+company> db.employee.updateOne({"name": "SAT"}, {"$set": {"age": 30}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+Query 11 : Update a department's location (e.g., update IT department's location to "San
+Francisco")
+
+company> db.department.updateOne({"name": "Information Technology"}, {"$set": {"location": "San Francisco"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}company> db.department.updateOne({"name": "Information Technology"}, {"$set": {"location": "San Francisco"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+Query 12 : Delete a specific employee by their ID
+
+company> db.employee.deleteOne({ _id: ObjectId("65430815bc90197846c2644d")});
+{ acknowledged: true, deletedCount: 1 }
+
+Query 13 : Delete a specific department by its ID
+
+company> db.department.deleteOne({ _id: ObjectId("654304bfbc90197846c26441")});
+{ acknowledged: true, deletedCount: 1 }
+
+Query 14 : Delete employees older than 40 years
+
+company> db.employee.deleteMany({age: {$gt : 25}});
+{ acknowledged: true, deletedCount: 2 }
+
+Query 15 : Delete employees not belonging to any department (where departmentId is null)
+
+company> db.employee.insertOne({"name" : "SAT","age" : 30,"designation":"XYZ","departmentId":"Null"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("65431560bc90197846c2644f")
+}
+
+company> db.employee.deleteMany({"departmentId": ""})
+{ acknowledged: true, deletedCount: 1 }
+
+or 
+
+company> db.employee.deleteMany({"departmentId": "Null"})
+{ acknowledged: true, deletedCount: 1 }
+
+Query 16 : Delete an employee (e.g., delete Alice Johnson from the employees)
+
+company> db.employee.deleteOne({"name": "Radhika Tagadghar"})
+{ acknowledged: true, deletedCount: 1 }
+
+Query 17 : Delete employees in a specific department (e.g., delete all employees in HR
+department)
+
+company> db.employee.deleteMany({"departmentId": "654304bfbc90197846c26440"})
+{ acknowledged: true, deletedCount: 1 }
+
+Query 18 : Delete a department (e.g., delete the HR department)
+
+company> db.department.deleteMany({"name": "HR"})
+{ acknowledged: true, deletedCount: 1 }
+
+
+
+
+
+
