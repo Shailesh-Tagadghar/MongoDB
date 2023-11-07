@@ -1,0 +1,560 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Practical 08\par
+test> use student\par
+switched to db student\par
+student> db.createCollection("students")\par
+\{ ok: 1 \}\par
+student> db.createCollection("department")\par
+\{ ok: 1 \}\par
+//insert department values : \par
+student> db.department.insertMany([\{"name":"Electrical Engineering","location":"Building B"\},\{"name":"Mechanical Engineering","location":"Building C"\},\{"name":"Computer Engineering","location":"Building D"\},\{"name":"Information Tech Engineering","location":"Building E"\},\{"name":"Electronic Engineering","location":"Building A"\}])\par
+\{\par
+  acknowledged: true,\par
+  insertedIds: \{\par
+    '0': ObjectId("65499a62e830a38942791c50"),\par
+    '1': ObjectId("65499a62e830a38942791c51"),\par
+    '2': ObjectId("65499a62e830a38942791c52"),\par
+    '3': ObjectId("65499a62e830a38942791c53"),\par
+    '4': ObjectId("65499a62e830a38942791c54")\par
+  \}\par
+\}\par
+\par
+//insert students data\par
+\par
+student> db.students.insertMany([\{"name":"Shailesh Tagadghar","age":21,"grade":"A","departmentId":ObjectId("65499a62e830a38942791c50"),"cources":["RM","ADDMS"]\},\{"name":"Abhishek Jaishwar","age":23,"grade":"B","departmentId":ObjectId("65499a62e830a38942791c51"),"cources":["Java","CNS"]\},\{"name":"Aniruddha Ambre","age":25,"grade":"C","departmentId":ObjectId("65499a62e830a38942791c52"),"cources":["Math","Python"]\},\{"name":"Jane Smith","age":23,"grade":"B","departmentId":ObjectId("65499a62e830a38942791c53"),"cources":["Chemistry","Biology"]\},\{"name":"Alice Johnson","age":21,"grade":"A","departmentId":ObjectId("65499a62e830a38942791c54"),"cources":["History","English"]\},\{"name":"Adiba Shaikh","age":22,"grade":"B","departmentId":ObjectId("65499a62e830a38942791c50"),"cources":["Science","Biology"]\},\{"name":"Himali More","age":24,"grade":"C","departmentId":ObjectId("65499a62e830a38942791c51"),"cources":["Java","CN"]\},\{"name":"Vaishnavi Patil","age":24,"grade":"C","departmentId":ObjectId("65499a62e830a38942791c52"),"cources":["Java","Python"]\},\{"name":"Smith John","age":15,"grade":"A","departmentId":ObjectId("65499a62e830a38942791c53"),"cources":["English","Marathi"]\},\{"name":"Johnson Alice","age":16,"grade":"B","departmentId":ObjectObjectId("65499a62e830a38942791c54"),"cources":["Marthi","Geography"]\}]);\par
+\{\par
+  acknowledged: true,\par
+  insertedIds: \{\par
+    '0': ObjectId("65499ddce830a38942791c55"),\par
+    '1': ObjectId("65499ddce830a38942791c56"),\par
+    '2': ObjectId("65499ddce830a38942791c57"),\par
+    '3': ObjectId("65499ddce830a38942791c58"),\par
+    '4': ObjectId("65499ddce830a38942791c59"),\par
+    '5': ObjectId("65499ddce830a38942791c5a"),\par
+    '6': ObjectId("65499ddce830a38942791c5b"),\par
+    '7': ObjectId("65499ddce830a38942791c5c"),\par
+    '8': ObjectId("65499ddce830a38942791c5d"),\par
+    '9': ObjectId("65499ddce830a38942791c5e")\par
+  \}\par
+\}\par
+\par
+Query 1 :  Retrive ALL Students\par
+student> db.students.find()\par
+[\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c55"),\par
+    name: 'Shailesh Tagadghar',\par
+    age: 21,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c50"),\par
+    cources: [ 'RM', 'ADDMS' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c56"),\par
+    name: 'Abhishek Jaishwar',\par
+    age: 23,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c51"),\par
+    cources: [ 'Java', 'CNS' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c57"),\par
+    name: 'Aniruddha Ambre',\par
+    age: 25,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Math', 'Python' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c58"),\par
+    name: 'Jane Smith',\par
+    age: 23,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'Chemistry', 'Biology' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c59"),\par
+    name: 'Alice Johnson',\par
+    age: 21,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c54"),\par
+    cources: [ 'History', 'English' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5a"),\par
+    name: 'Adiba Shaikh',\par
+    age: 22,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c50"),\par
+    cources: [ 'Science', 'Biology' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5b"),\par
+    name: 'Himali More',\par
+    age: 24,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c51"),\par
+    cources: [ 'Java', 'CN' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5c"),\par
+    name: 'Vaishnavi Patil',\par
+    age: 24,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Java', 'Python' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5d"),\par
+    name: 'Smith John',\par
+    age: 15,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'English', 'Marathi' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5e"),\par
+    name: 'Johnson Alice',\par
+    age: 16,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c54"),\par
+    cources: [ 'Marthi', 'Geography' ]\par
+  \}\par
+]\par
+\par
+Query 2 :  Retrieve students with a specific grade (e.g. grade : A)\par
+student> db.students.find(\{grade:"A"\})\par
+[\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c55"),\par
+    name: 'Shailesh Tagadghar',\par
+    age: 21,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c50"),\par
+    cources: [ 'RM', 'ADDMS' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c59"),\par
+    name: 'Alice Johnson',\par
+    age: 21,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c54"),\par
+    cources: [ 'History', 'English' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5d"),\par
+    name: 'Smith John',\par
+    age: 15,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'English', 'Marathi' ]\par
+  \}\par
+]\par
+\par
+Query 3 : Retrieve students older than 23 years\par
+student> db.students.find(\{age: \{$gt:23\}\})\par
+[\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c57"),\par
+    name: 'Aniruddha Ambre',\par
+    age: 25,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Math', 'Python' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5b"),\par
+    name: 'Himali More',\par
+    age: 24,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c51"),\par
+    cources: [ 'Java', 'CN' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5c"),\par
+    name: 'Vaishnavi Patil',\par
+    age: 24,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Java', 'Python' ]\par
+  \}\par
+]\par
+\par
+Query 4 : Retrieve department with the number of students enrolled in each department (using $lookup and $size)\par
+student> db.department.aggregate([\par
+...   \{\par
+...     $lookup: \{\par
+...       from: "students",\par
+...       localField: "_id",\par
+...       foreignField: "departmentId",\par
+...       as: "students"\par
+...     \}\par
+...   \},\par
+...   \{\par
+...     $project: \{\par
+...       name: 1,\par
+...       location: 1,\par
+...       numberOfStudents: \{ $size: "$students" \}\par
+...     \}\par
+...   \}\par
+... ])\par
+[\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c50"),\par
+    name: 'Electrical Engineering',\par
+    location: 'Building B',\par
+    numberOfStudents: 2\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c51"),\par
+    name: 'Mechanical Engineering',\par
+    location: 'Building C',\par
+    numberOfStudents: 2\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c52"),\par
+    name: 'Computer Engineering',\par
+    location: 'Building D',\par
+    numberOfStudents: 2\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c53"),\par
+    name: 'Information Tech Engineering',\par
+    location: 'Building E',\par
+    numberOfStudents: 2\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c54"),\par
+    name: 'Electronic Engineering',\par
+    location: 'Building A',\par
+    numberOfStudents: 2\par
+  \}\par
+]\par
+\par
+Query 5 : Retrieve students sorted by age in descending order\par
+student> db.students.find().sort(\{age : -1\})\par
+[\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c57"),\par
+    name: 'Aniruddha Ambre',\par
+    age: 25,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Math', 'Python' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5b"),\par
+    name: 'Himali More',\par
+    age: 24,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c51"),\par
+    cources: [ 'Java', 'CN' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5c"),\par
+    name: 'Vaishnavi Patil',\par
+    age: 24,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Java', 'Python' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c56"),\par
+    name: 'Abhishek Jaishwar',\par
+    age: 23,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c51"),\par
+    cources: [ 'Java', 'CNS' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c58"),\par
+    name: 'Jane Smith',\par
+    age: 23,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'Chemistry', 'Biology' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5a"),\par
+    name: 'Adiba Shaikh',\par
+    age: 22,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c50"),\par
+    cources: [ 'Science', 'Biology' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c55"),\par
+    name: 'Shailesh Tagadghar',\par
+    age: 21,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c50"),\par
+    cources: [ 'RM', 'ADDMS' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c59"),\par
+    name: 'Alice Johnson',\par
+    age: 21,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c54"),\par
+    cources: [ 'History', 'English' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5e"),\par
+    name: 'Johnson Alice',\par
+    age: 16,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c54"),\par
+    cources: [ 'Marthi', 'Geography' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5d"),\par
+    name: 'Smith John',\par
+    age: 15,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'English', 'Marathi' ]\par
+  \}\par
+]\par
+\par
+Query 6 : Update Students GRADE (e.g. update students with ID "student_id_here" grade to "B")\par
+student> db.students.updateOne(\{_id: ObjectId("65499ddce830a38942791c5d")\},\{$set: \{grade: "B"\}\})\par
+\{\par
+  acknowledged: true,\par
+  insertedId: null,\par
+  matchedCount: 1,\par
+  modifiedCount: 1,\par
+  upsertedCount: 0\par
+\}\par
+output: \par
+student> db.students.find(\{name: "Smith John"\})\par
+[\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5d"),\par
+    name: 'Smith John',\par
+    age: 15,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'English', 'Marathi' ]\par
+  \}\par
+]\par
+\par
+Query 7 : Increment the age of all students by 1 year\par
+student> db.students.updateMany(\{\}, \{"$inc": \{"age": 1\}\})\par
+\{\par
+  acknowledged: true,\par
+  insertedId: null,\par
+  matchedCount: 10,\par
+  modifiedCount: 10,\par
+  upsertedCount: 0\par
+\}\par
+output :\par
+student> db.students.find()\par
+[\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c55"),\par
+    name: 'Shailesh Tagadghar',\par
+    age: 22,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c50"),\par
+    cources: [ 'RM', 'ADDMS' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c56"),\par
+    name: 'Abhishek Jaishwar',\par
+    age: 24,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c51"),\par
+    cources: [ 'Java', 'CNS' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c57"),\par
+    name: 'Aniruddha Ambre',\par
+    age: 26,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Math', 'Python' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c58"),\par
+    name: 'Jane Smith',\par
+    age: 24,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'Chemistry', 'Biology' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c59"),\par
+    name: 'Alice Johnson',\par
+    age: 22,\par
+    grade: 'A',\par
+    departmentId: ObjectId("65499a62e830a38942791c54"),\par
+    cources: [ 'History', 'English' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5a"),\par
+    name: 'Adiba Shaikh',\par
+    age: 23,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c50"),\par
+    cources: [ 'Science', 'Biology' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5b"),\par
+    name: 'Himali More',\par
+    age: 25,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c51"),\par
+    cources: [ 'Java', 'CN' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5c"),\par
+    name: 'Vaishnavi Patil',\par
+    age: 25,\par
+    grade: 'C',\par
+    departmentId: ObjectId("65499a62e830a38942791c52"),\par
+    cources: [ 'Java', 'Python' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5d"),\par
+    name: 'Smith John',\par
+    age: 16,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'English', 'Marathi' ]\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5e"),\par
+    name: 'Johnson Alice',\par
+    age: 17,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c54"),\par
+    cources: [ 'Marthi', 'Geography' ]\par
+  \}\par
+]\par
+\par
+Query 8 : Update a department name (e.g. update department with id 'department_id here'  name to 'Computer Science')\par
+ student> db.department.updateOne(\{_id: ObjectId("65499a62e830a38942791c52")\},\{$set: \{name: "Computer Science"\}\})\par
+\{\par
+  acknowledged: true,\par
+  insertedId: null,\par
+  matchedCount: 1,\par
+  modifiedCount: 1,\par
+  upsertedCount: 0\par
+\}\par
+student> db.department.find()\par
+[\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c50"),\par
+    name: 'Electrical Engineering',\par
+    location: 'Building B'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c51"),\par
+    name: 'Mechanical Engineering',\par
+    location: 'Building C'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c52"),\par
+    name: 'Computer Science',\par
+    location: 'Building D'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c53"),\par
+    name: 'Information Tech Engineering',\par
+    location: 'Building E'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c54"),\par
+    name: 'Electronic Engineering',\par
+    location: 'Building A'\par
+  \}\par
+]\par
+\par
+Query 9 : Add new cource to students enrolled cources (e.g.  add "History" to students with ID 'student_id_here')\par
+student> db.students.updateOne(\{_id: ObjectId("65499ddce830a38942791c5d")\},\{$push: \{cources: ["History"]\}\})\par
+\{\par
+  acknowledged: true,\par
+  insertedId: null,\par
+  matchedCount: 1,\par
+  modifiedCount: 1,\par
+  upsertedCount: 0\par
+\}\par
+OUTPUT:\par
+student> db.students.find(\{name: "Smith John"\})\par
+[\par
+  \{\par
+    _id: ObjectId("65499ddce830a38942791c5d"),\par
+    name: 'Smith John',\par
+    age: 16,\par
+    grade: 'B',\par
+    departmentId: ObjectId("65499a62e830a38942791c53"),\par
+    cources: [ 'English', 'Marathi', [ 'History' ] ]\par
+  \}\par
+]\par
+\par
+Query 10 : Update the name and location of a department (e.g. update department with id 'depart_id_here')\par
+student> db.department.updateOne(\{_id: ObjectId("65499a62e830a38942791c52")\},\{$set: \{name: "Computer Science Part I",location: "Building F"\}\})\par
+\{\par
+  acknowledged: true,\par
+  insertedId: null,\par
+  matchedCount: 1,\par
+  modifiedCount: 1,\par
+  upsertedCount: 0\par
+\}\par
+Output :\par
+student> db.department.find()\par
+[\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c50"),\par
+    name: 'Electrical Engineering',\par
+    location: 'Building B'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c51"),\par
+    name: 'Mechanical Engineering',\par
+    location: 'Building C'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c52"),\par
+    name: 'Computer Science Part I',\par
+    location: 'Building F'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c53"),\par
+    name: 'Information Tech Engineering',\par
+    location: 'Building E'\par
+  \},\par
+  \{\par
+    _id: ObjectId("65499a62e830a38942791c54"),\par
+    name: 'Electronic Engineering',\par
+    location: 'Building A'\par
+  \}\par
+]\par
+\par
+Query 11 : delete a specific students by their id\par
+student> db.students.deleteOne(\{ _id: ObjectId("65499ddce830a38942791c5d")\});\par
+\{ acknowledged: true, deletedCount: 1 \}\par
+\par
+Query 12 : Delete the students with specific grade(e.g. delete students with grade 'c')\par
+student> db.students.deleteOne(\{ grade: "C"\});\par
+\{ acknowledged: true, deletedCount: 1 \}\par
+\par
+Query 13 : Delete all students older than 24 year\line student> db.students.deleteMany(\{age: \{$gt: 24\}\});\par
+\{ acknowledged: true, deletedCount: 2 \}\par
+\par
+Query 14 : Delete a specific department by its ID\par
+student> db.department.deleteOne(\{ _id: ObjectId("65499a62e830a38942791c54")\});\par
+\{ acknowledged: true, deletedCount: 1 \}\par
+\par
+Query 15 : Delete all sudents with specific department (e.g. delete all students in department with id 'department_id_here')\par
+db.students.deleteMany(\par
+  \{ departmentId: ObjectId("department_id_here") \}\par
+)\par
+\par
+\par
+\par
+\par
+}
+ 
