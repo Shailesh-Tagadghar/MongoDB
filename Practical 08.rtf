@@ -549,8 +549,8 @@ student> db.department.deleteOne(\{ _id: ObjectId("65499a62e830a38942791c54")\})
 \{ acknowledged: true, deletedCount: 1 \}\par
 \par
 Query 15 : Delete all sudents with specific department (e.g. delete all students in department with id 'department_id_here')\par
-db.students.deleteMany(\par
-  \{ departmentId: ObjectId("department_id_here") \}\par
+student> db.students.deleteMany({departmentId: ObjectId("65499a62e830a38942791c54")})
+{ acknowledged: true, deletedCount: 2 }
 )\par
 \par
 \par
